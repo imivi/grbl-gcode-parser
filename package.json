@@ -8,15 +8,18 @@
     "parser",
     "cnc"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "bin": "dist/cli.js",
+  "main": "dist/bundle/index.js",
+  "types": "dist/bundle/index.d.ts",
+  "type": "module",
   "files": [
-    "dist"
+    "dist/bundle/index.d.ts",
+    "dist/bundle/index.js",
+    "dist/bundle/index.js.map"
   ],
   "scripts": {
     "dev": "tsx watch src/test/test_gcode.ts",
-    "build": "tsc",
+    "build": "rimraf dist && tsc && rollup --config",
+    "pack_": "pnpm build && npm pack --pack-destination dist",
     "prepublish": "pnpm build",
     "test": "jest"
   },
@@ -27,10 +30,16 @@
     "url": "git+https://github.com/imivi/gcode-parser.git"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
     "jest": "^29.6.2",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.27.1",
+    "rollup-plugin-dts": "^5.3.1",
     "ts-jest": "^29.1.1",
+    "tslib": "^2.6.1",
     "tsx": "^3.12.7"
   }
 }
