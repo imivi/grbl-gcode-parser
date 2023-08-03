@@ -1,0 +1,36 @@
+{
+  "name": "gcode-parser",
+  "version": "1.0.0",
+  "description": "Parse a gcode string into objects, simulating the machine state.",
+  "keywords": [
+    "g-code",
+    "gcode",
+    "parser",
+    "cnc"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "dist/cli.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsx watch src/test/test_gcode.ts",
+    "build": "tsc",
+    "prepublish": "pnpm build",
+    "test": "jest"
+  },
+  "author": "imivi",
+  "license": "MIT",
+  "repository": {
+    "type": "github",
+    "url": "git+https://github.com/imivi/gcode-parser.git"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.5",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1",
+    "tsx": "^3.12.7"
+  }
+}
