@@ -3,6 +3,8 @@
 // const validGcodeLettersSet = new Set(validGcodeLetters)
 // type GcodeLetter = typeof validGcodeLetters
 
+import { Command, GCodeParam } from "./types"
+
 // type GcodeLetter = "G" | "M" | "X" | "Y" | "Z"
 // const validGcodeLetters = new Set(["G","M","X","Y","Z"])
 
@@ -49,11 +51,6 @@ export function parseTokens(input: string[]): Token[] {
 }
 
 
-export type Command = {
-    type: string
-    params: Record<string,number>
-}
-
 
 /**
  * Parses a single gcode line composed of multiple tokens
@@ -94,7 +91,7 @@ export function parseLineCommand(tokens: Token[]): Command[] {
                     params: {},
                 }
             }
-            command.params[letter] = value
+            command.params[letter as GCodeParam] = value
         }
     })
 

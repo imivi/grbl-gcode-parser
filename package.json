@@ -1,7 +1,7 @@
 {
   "name": "gcode-parser",
   "version": "1.0.0",
-  "description": "Parse a gcode string into objects, simulating the machine state.",
+  "description": "Parse a gcode string into objects, while simulating the machine state.",
   "keywords": [
     "g-code",
     "gcode",

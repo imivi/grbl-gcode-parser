@@ -4,7 +4,7 @@
 // https://linuxcnc.org/docs/html/gcode/m-code.html
 // https://machmotion.com/blog/knowledge-g-code/
 
-import { Command } from "../parser/parser"
+import { Command } from "../parser/types"
 import { GCode } from "./gcodes"
 import { Machine, Vector3 } from "./machine"
 
@@ -25,10 +25,12 @@ export const gcodeHandlers: Record<GCode, GCodeHandler> = {
     // Moves
     G0: (c, m) => {
         m.travelMode = "G0"
+        m.feedRate = c.params?.F || m.feedRate
         moveHandler(c, m)
     },
     G1: (c, m) => {
         m.travelMode = "G1"
+        m.feedRate = c.params?.F || m.feedRate
         moveHandler(c, m)
     },
 
@@ -57,15 +59,15 @@ export const gcodeHandlers: Record<GCode, GCodeHandler> = {
     // Spindle
     M3: (c, m) => {
         m.spindleState = "CW"
-        m.spindleSpeed = c.params?.s || 0
+        m.spindleSpeed = c.params?.S || 0
     },
     M4: (c, m) => {
         m.spindleState = "CCW"
-        m.spindleSpeed = c.params?.s || 0
+        m.spindleSpeed = c.params?.S || 0
     },
     M5: (c, m) => {
         m.spindleState = "STOP"
-        m.spindleSpeed = c.params?.s || 0
+        m.spindleSpeed = c.params?.S || 0
     },
 
     // Coolant
@@ -102,8 +104,8 @@ export const gcodeHandlers: Record<GCode, GCodeHandler> = {
 }
 
 const moveHandler: GCodeHandler = (c, m) => {
-    const { x=0, y=0, z=0 } = c.params
-    let distance = new Vector3(x,y,z)
+    const { X=0, Y=0, Z=0 } = c.params
+    let distance = new Vector3(X, Y, Z)
     if(m.unitsMode === "INCHES") {
         distance = inchesToMm(distance)
     }

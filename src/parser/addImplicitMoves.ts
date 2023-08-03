@@ -1,4 +1,4 @@
-import { Command } from "./parser"
+import { Command } from "./types"
 
 // Add any implicit G0's and G1's
 export function addImplicitMoves(commands: Command[]) {

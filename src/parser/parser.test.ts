@@ -1,4 +1,5 @@
-import { Command, parseLineCommand, parseTokens } from "./parser"
+import { parseLineCommand, parseTokens } from "./parser"
+import { Command } from "./types"
 
 
 describe("Parse tokens", () => {
