@@ -3,11 +3,9 @@
 
 ![NPM badge](https://github.com/imivi/grbl-gcode-parser/blob/main/docs/badge_npm.svg?raw=true)
 
-![GRBL G-Code Parser Banner](https://github.com/imivi/grbl-gcode-parser/blob/main/docs/banner.jpg?raw=true)
+![GRBL G-Code Parser Banner](https://github.com/imivi/grbl-gcode-parser/blob/main/docs/banner.png?raw=true)
 
-**`grbl-gcode-parser`** 
-
-Parse G-Code strings into JS objects. For example:
+Parse G-Code strings into JS objects. Works in the browser. For example:
 
 **input**
 
