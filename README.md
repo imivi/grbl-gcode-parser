@@ -1,7 +1,7 @@
 
 # GRBL G-Code Parser
 
-![NPM badge](https://github.com/imivi/grbl-gcode-parser/blob/main/docs/badge_npm.svg?raw=true)
+[![NPM badge](https://github.com/imivi/grbl-gcode-parser/blob/main/docs/badge_npm.svg?raw=true)](https://www.npmjs.com/package/grbl-gcode-parser)
 
 ![GRBL G-Code Parser Banner](https://github.com/imivi/grbl-gcode-parser/blob/main/docs/banner.png?raw=true)
 
