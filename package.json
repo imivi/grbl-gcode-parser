@@ -1,25 +1,28 @@
 {
-  "name": "gcode-parser",
+  "name": "grbl-gcode-parser",
   "version": "1.0.0",
-  "description": "Parse a gcode string into objects, while simulating the machine state.",
+  "description": "Parse a gcode string into objects",
   "keywords": [
     "g-code",
     "gcode",
     "parser",
     "cnc"
   ],
-  "main": "dist/bundle/index.js",
-  "types": "dist/bundle/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
   "files": [
-    "dist/bundle/index.d.ts",
-    "dist/bundle/index.js",
-    "dist/bundle/index.js.map"
+    "index.d.ts",
+    "index.js",
+    "index.js.map"
   ],
   "scripts": {
     "dev": "tsx watch src/test/test_gcode.ts",
-    "build": "rimraf dist && tsc && rollup --config",
-    "pack_": "pnpm build && npm pack --pack-destination dist",
+    "clean": "rimraf dist index.d.ts index.js index.js.map index.mjs index.mjs.map",
+    "prebuild": "tsx src/badges.ts",
+    "build": "pnpm clean && tsc && rollup --config",
+    "pack_": "npm pack --pack-destination dist",
+    "package": "pnpm _build && pnpm _pack",
     "prepublish": "pnpm build",
     "test": "jest"
   },
@@ -27,13 +30,14 @@
   "license": "MIT",
   "repository": {
     "type": "github",
-    "url": "git+https://github.com/imivi/gcode-parser.git"
+    "url": "git+https://github.com/imivi/grbl-gcode-parser.git"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
+    "badge-maker": "^3.3.1",
     "jest": "^29.6.2",
     "rimraf": "^5.0.1",
     "rollup": "^3.27.1",
